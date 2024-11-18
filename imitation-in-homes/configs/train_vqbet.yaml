@@ -6,7 +6,7 @@ defaults:
 - _self_
 
 num_epochs: 501
-eval_every: 5
+eval_every: 100
 device: cuda
 batch_size: 50
 sampler: null
@@ -54,7 +54,7 @@ scheduler:
 model_path: checkpoints/${now:%Y-%m-%d}/${include_task}-${include_env}-${now:%H-%M-%S}-vqbet-n_embed-${vqvae_n_embed}-depth-${use_depth}-dobb-e-temp-${temperature}-seq-select-${sequentially_select}-split-train-${split_training}-frozen-enc-${freeze_encoder}-timeskip-${control_timeskip}
 files_list_path: r3d_files/${now:%Y-%m-%d}/${include_task}-${include_env}-${now:%H-%M-%S}-vqbet-n_embed-${vqvae_n_embed}-depth-${use_depth}-dobb-e-temp-${temperature}-seq-select-${sequentially_select}-split-train-${split_training}-frozen-enc-${freeze_encoder}-timeskip-${control_timeskip}
 resume_training: false
-save_every: 5
+save_every: 100
 description: "(description)"
 
 wandb:

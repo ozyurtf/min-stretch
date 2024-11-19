@@ -7,6 +7,8 @@
     1. `cd min-stretch`
 4. Run setup script
     1. `./setup.sh`
+5. Setup WandB
+    1. TODO (ignore for now)
 
 <!-- ## Setting up Mamba Environment
 
@@ -56,8 +58,15 @@ Best practices on Greene: https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/g
     1. `./split_data.sh`
     2. Only do this **once**
 2. Test whether code runs on CPU before submitting a GPU job
-    1. TODO
-3. Set "include_task" in `train_vqbet_model.sh`
+    1. Test RVQ training
+        1. Set "include_task" in `test_rvq_cpu.sh`
+        2. Run `./test_rvq_cpu.sh`
+        3. Quit program (ctrl+c) once first epoch begins
+    2. Test VQ-BeT training
+        1. Set "include_task" in `test_vqbet_cpu.sh`
+        2. Run `./test_vqbet_cpu.sh`
+        3. Quit program (ctrl+c) once first epoch begins
+3. If 2. is complete without errors, set "include_task" in `train_vqbet_model.sh`
 4. Submit GPU training job
     1. `sbatch train_vqbet.slurm`
 

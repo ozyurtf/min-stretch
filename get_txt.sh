@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # The root directory to search from
-rootDir="/home/robot_lab/data/all-drawer-opening-data-clean/drawer_opening"
+rootDir="$1"
 
 # The file to store the results
 outputFile="r3d_files.json"
@@ -12,24 +12,23 @@ echo "[" > "$outputFile"
 # Initialize a variable to handle comma separation in JSON
 first=1
 
-# Find all directories, then check each one to see if it is a leaf directory
-find "$rootDir" -type d | while read dir; do
-  if [ $(find "$dir" -mindepth 1 -type d | wc -l) -eq 0 ]; then
-    # For the first entry, don't prepend a comma
-    if [ $first -ne 1 ]; then
-      echo "," >> "$outputFile"
-    else
-      first=0
-    fi
-    # Append the directory name with .zip and wrap in quotes for JSON
-    echo -n "    \"$dir.zip\"" >> "$outputFile"
+# Find all directories exactly at the 3rd level of depth and process them
+find "$rootDir" -mindepth 4 -maxdepth 4 -type d | while read dir; do
+  # For the first entry, don't prepend a comma
+  if [ $first -ne 1 ]; then
+    echo "," >> "$outputFile"
+  else
+    first=0
   fi
+  # Append the directory name with .zip and wrap in quotes for JSON
+  echo -n "    \"$dir.zip\"" >> "$outputFile"
 done
 
 # Close the JSON array
 echo -e "\n]" >> "$outputFile"
 
+# Rename the JSON file to .txt and move it to the root directory
 mv r3d_files.json r3d_files.txt
-mv r3d_files.txt $rootDir
+mv r3d_files.txt "$rootDir"
 
-echo "Leaf directories have been written to $rootDir/r3d_files.txt in JSON format"
+echo "Directories at the 3rd level have been written to $rootDir/r3d_files.txt in JSON format"

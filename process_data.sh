@@ -13,7 +13,6 @@ sleep 1
 echo "Exporting videos..."
 python data-collection/export_vids_ffmpeg.py --r3d_paths_file "${EXPORT_FOLDER}/r3d_files.txt" --num_workers 1 --start_index 0 --end_index -1
 sleep 1
-echo "Done!"
 echo "Compiling r3d_files.txt..."
 ./get_txt.sh $EXPORT_FOLDER
 echo "Done!"

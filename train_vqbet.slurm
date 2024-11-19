@@ -18,6 +18,6 @@ singularity exec $nv \
             /scratch/work/public/singularity/cuda11.8.86-cudnn8.7-devel-ubuntu22.04.2.sif \
             /bin/bash -c "
 mamba activate home_robot
-cd $SCRATCH/min-stretch/imitation-in-homes
-HYDRA_FULL_ERROR=1 accelerate launch --config_file configs/accelerate/accel_cfg.yaml --main_process_port $port train.py --config-name train_vqbet.yaml
+cd $SCRATCH/min-stretch
+./train_vqbet_model.sh
 "

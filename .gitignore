@@ -165,3 +165,5 @@ checkpoints/
 outputs/
 robot_images/
 data/
+*.ipynb
+wandb/

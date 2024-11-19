@@ -8,7 +8,7 @@ defaults:
 num_epochs: 501
 eval_every: 100
 device: cuda
-batch_size: 50
+batch_size: 16
 sampler: null
 use_depth: False
 freeze_encoder: False

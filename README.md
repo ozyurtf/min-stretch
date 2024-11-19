@@ -1,3 +1,13 @@
+## Clone and Enter Repository in Greene
+1. Enter scratch directory
+    1. `cd $SCRATCH`
+2. Clone
+    1. `git clone https://github.com/NYU-robot-learning/min-stretch.git` 
+3. Change directory
+    1. `cd min-stretch`
+4. Run setup script
+    1. `./setup.sh`
+
 <!-- ## Setting up Mamba Environment
 
 1. Download [mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html#mamba-install) with instructions from [here](https://github.com/conda-forge/miniforge?tab=readme-ov-file#unix-like-platforms-mac-os--linux), also shown below
@@ -10,62 +20,49 @@
         
     2. Re-open shell and run `mamba activate` if not already in the base environment
 2. Create environment
-    1. `mamba env create -f conda_env.yaml`
+    1. `mamba env create -f conda_env.yaml` -->
 
+## Request Resources and Set Up Environment on Greene
+1. `cd $SCRATCH`
+2. Request CPU resources in an interactive session
+    i. `srun --nodes=1 --tasks-per-node=1 --cpus-per-task=16 --mem=64GB --time=2:00:00 --pty /bin/bash`
+    ii. This requests 16 CPUs, which is sufficient for data processing
+3. Setup a Conda environment in an overlay file system
+    i. Installing a Conda environment takes ~10 minutes, so just copy from my folder for now
+    ii. `cp /vast/hre7290/overlay-home-robot-env.ext3 $SCRATCH`
+4. Enter singularity container: `singularity exec --overlay $SCRATCH/overlay-home-robot-env.ext3:ro /scratch/work/public/singularity/cuda11.8.86-cudnn8.7-devel-ubuntu22.04.2.sif /bin/bash`
 
+More detailed instructions for getting started on Greene: https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/greene/getting-started?authuser=0
 ## Data Processing
-
-For extracting a single environment:
-
-Ensure you've created the `home_robot` mamba environment from the first 3 steps of the [Imitation in Homes documentation](https://educated-diascia-662.notion.site/Setting-Up-Running-Zero-Shot-Models-on-Hello-Robot-Stretch-66658ab1a6454f219e0fb1db1baa9d6f?pvs=97#55e4606db0e045ada791177caa599692). 
-
-1.  Compress video taken from the Record3D app:
-
+1.  Compress videos taken from the Record3D app. Separate each environment/scene into its own zip file.
     ![Export Data](https://github.com/user-attachments/assets/2c22358e-d0ad-4e18-8058-556156235e8a)
-2. Get the files on your machine.
-   1. **Option 1: Using Google drive:**
-      1. \[Only once] Generate Google Service Account API key to download from private folders on Google Drive. There are some instructions on how to do so in this Stackoverflow link [https://stackoverflow.com/a/72076913](https://stackoverflow.com/a/72076913)
-      2. \[Only once] Rename the .json file to `client_secret.json` and put it in the same directory as  `gdrive_downloader.py`
-      3. Upload `.zip` file into its own folder on Google Drive, and copy folder\_id from URL to put it in the `GDRIVE_FOLDER_ID` in the `./do-all.sh` file.
-   2. **Option 2: Manually**:
-      *   Comment out the `GDRIVE_FOLDER_ID` line from `./do-all.sh` and create the following hierarchy locally
-
-          ```bash
-          dataset/
-          |--- task1/
-          |------ home1/
-          |--------- env1/
-          |------------ {data_file}.zip
-          |--------- env2/
-          |------------ {data_file}.zip
-          |--------- env.../
-          |------------ {data_file}.zip
-          |------ home2/
-          |------ home.../
-          |--- task2/
-          |--- task.../
-          ```
-      * The .zip files should contain .r3d files exported from the Record3D app in the previous step.
-3. Modify required variables in `do-all.sh`.
-   1. `TASK_NAME` task name.
-   2. `HOME` name or ID of the home.
-   3. `ROOT_FOLDER` folder where the data is stored after downloading.
-   4. `EXPORT_FOLDER` folder where the dataset is stored after processing. Should be different from `ROOT_FOLDER`.
-   5. `ENV_NO` current environment number in the same home and task set.
-   6. `GRIPPER_MODEL_PATH` path to the gripper model. It should be in this folder as `gripper_model_new.pth`.
-4.  Run
-
-    ```bash
-    ./do-all.sh
-    ```
+2. Upload zip files to Google Drive and make them public.
+3. Activate Conda/Mamba environment in Singularity container on Greene
+    i. `mamba activate home_robot`
+4. Modify required variables in `download_data.sh`.
+   1. `GDRIVE_FILE_ID` 
+   Share + "Get link" ![](images/file_id.png)
+   2. `TASK_NUMBER`
+   3. `NET_ID`
+   4. `ENV_NO`
+5. Run `./download_data.sh` in command line.
+6. Repeat 3 and 4 for each .zip file. 
+7. Run `./process_data.sh` in command line.
 
 ## Model Training
-1. 
+1. Split data into train and validation
+    i. `./split_data.sh`
+    ii. Only do this **once**
+2. Test whether code runs on CPU before submitting a GPU job
+    i. TODO
+3. Set "include_task" in `train_vqbet_model.sh`
+4. Submit job
+    i. `sbatch train_vqbet.slurm`
 
-## Robot Deployment
+<!-- ## Robot Deployment
+1.  -->
 
-
-# Setting Up & Running Zero-Shot Models on Hello Robot Stretch
+<!-- # Setting Up & Running Zero-Shot Models on Hello Robot Stretch
 
 1. Ensure you have red cylindrical gripper tips on your Stretch’s end-effector
 2. Clone and enter repository

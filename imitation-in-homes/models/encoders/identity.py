@@ -18,7 +18,7 @@ class IdentityEncoder(AbstractEncoder):
     ):
         super().__init__()
         self._model_name = model_name
-
+        self.device = None
         self.model = nn.Identity()
 
         # Use a placeholder parameter if the model has no parameters
@@ -35,6 +35,7 @@ class IdentityEncoder(AbstractEncoder):
         return 0
 
     def to(self, device):
+        self.device = device
         self.model.to(device)
         if self.placeholder_param is not None:
             self.placeholder_param.to(device)

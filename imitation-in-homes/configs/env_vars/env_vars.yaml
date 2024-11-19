@@ -1,4 +1,4 @@
-project_root: /path/to/robot-utility-models/imitation-in-homes # path to the imitation-in-homes folder
+project_root: /scratch/hre7290/min-stretch/imitation-in-homes
 
 data_root: 
     train: ${env_vars.project_root}/data/extracted
@@ -10,4 +10,4 @@ data_original_root:
     val: ${env_vars.project_root}/data/extracted_val
 
 wandb:
-    entity: username  # wandb username
+    entity: haritheja  # wandb username

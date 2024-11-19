@@ -44,6 +44,7 @@ class RVQLossFn(AbstractLossFn):
             vqvae_n_embed=vqvae_n_embed,
             vqvae_groups=vqvae_groups,
             eval=False,
+            device=model.device,
             enc_loss_type="through_vqlayer",
             obs_cond=obs_cond,
         )

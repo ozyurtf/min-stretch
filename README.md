@@ -58,7 +58,7 @@ Best practices on Greene: https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/g
 2. Test whether code runs on CPU before submitting a GPU job
     1. TODO
 3. Set "include_task" in `train_vqbet_model.sh`
-4. Submit job
+4. Submit GPU training job
     1. `sbatch train_vqbet.slurm`
 
 <!-- ## Robot Deployment

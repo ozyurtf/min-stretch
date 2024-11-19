@@ -25,11 +25,11 @@
 ## Request Resources and Set Up Environment on Greene
 1. `cd $SCRATCH`
 2. Request CPU resources in an interactive session
-    i. `srun --nodes=1 --tasks-per-node=1 --cpus-per-task=16 --mem=64GB --time=2:00:00 --pty /bin/bash`
-    ii. This requests 16 CPUs, which is sufficient for data processing
+    1. `srun --nodes=1 --tasks-per-node=1 --cpus-per-task=16 --mem=64GB --time=2:00:00 --pty /bin/bash`
+    2. This requests 16 CPUs, which is sufficient for data processing
 3. Setup a Conda environment in an overlay file system
-    i. Installing a Conda environment takes ~10 minutes, so just copy from my folder for now
-    ii. `cp /vast/hre7290/overlay-home-robot-env.ext3 $SCRATCH`
+    1. Installing a Conda environment takes ~10 minutes, so just copy from my folder for now
+    2. `cp /vast/hre7290/overlay-home-robot-env.ext3 $SCRATCH`
 4. Enter singularity container: `singularity exec --overlay $SCRATCH/overlay-home-robot-env.ext3:ro /scratch/work/public/singularity/cuda11.8.86-cudnn8.7-devel-ubuntu22.04.2.sif /bin/bash`
 
 More detailed instructions for getting started on Greene: https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/greene/getting-started?authuser=0
@@ -38,7 +38,7 @@ More detailed instructions for getting started on Greene: https://sites.google.c
     ![Export Data](https://github.com/user-attachments/assets/2c22358e-d0ad-4e18-8058-556156235e8a)
 2. Upload zip files to Google Drive and make them public.
 3. Activate Conda/Mamba environment in Singularity container on Greene
-    i. `mamba activate home_robot`
+    1. `mamba activate home_robot`
 4. Modify required variables in `download_data.sh`.
    1. `GDRIVE_FILE_ID` 
    Share + "Get link" ![](images/file_id.png)
@@ -51,13 +51,13 @@ More detailed instructions for getting started on Greene: https://sites.google.c
 
 ## Model Training
 1. Split data into train and validation
-    i. `./split_data.sh`
-    ii. Only do this **once**
+    1. `./split_data.sh`
+    2. Only do this **once**
 2. Test whether code runs on CPU before submitting a GPU job
-    i. TODO
+    1. TODO
 3. Set "include_task" in `train_vqbet_model.sh`
 4. Submit job
-    i. `sbatch train_vqbet.slurm`
+    1. `sbatch train_vqbet.slurm`
 
 <!-- ## Robot Deployment
 1.  -->

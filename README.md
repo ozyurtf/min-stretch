@@ -33,6 +33,8 @@
 4. Enter singularity container: `singularity exec --overlay $SCRATCH/overlay-home-robot-env.ext3:ro /scratch/work/public/singularity/cuda11.8.86-cudnn8.7-devel-ubuntu22.04.2.sif /bin/bash`
 
 More detailed instructions for getting started on Greene: https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/greene/getting-started?authuser=0
+
+Best practices on Greene: https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/greene/best-practices?authuser=0
 ## Data Processing
 1.  Compress videos taken from the Record3D app. Separate each environment/scene into its own zip file.
     ![Export Data](https://github.com/user-attachments/assets/2c22358e-d0ad-4e18-8058-556156235e8a)

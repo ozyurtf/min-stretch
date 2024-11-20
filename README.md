@@ -32,7 +32,7 @@
 3. Setup a Mamba environment
     1. `cp /vast/hre7290/overlay-home-robot-env.ext3 $SCRATCH`
     2. Enter singularity container: `singularity exec --overlay $SCRATCH/overlay-home-robot-env.ext3:ro /scratch/work/public/singularity/cuda11.8.86-cudnn8.7-devel-ubuntu22.04.2.sif /bin/bash`
-    3. https://github.com/conda-forge/miniforge
+    3. Install Mamba into scratch folder: https://github.com/conda-forge/miniforge
     4. `mamba env create -f conda_env.yaml`
 
 More detailed instructions for getting started on Greene: https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/greene/getting-started?authuser=0

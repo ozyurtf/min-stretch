@@ -32,7 +32,7 @@
 3. Setup a Mamba environment
     1. `cp /scratch/work/public/overlay-fs-ext3/overlay-50G-10M.ext3.gz $SCRATCH/overlay-home-robot-env.ext3.gz`
     2. `gunzip overlay-home-robot-env.ext3.gz`
-    3. Enter singularity container: `singularity exec --overlay $SCRATCH/overlay-home-robot-env.ext3:ro /scratch/work/public/singularity/cuda11.8.86-cudnn8.7-devel-ubuntu22.04.2.sif /bin/bash`
+    3. Enter singularity container: `singularity exec --overlay $SCRATCH/overlay-home-robot-env.ext3:rw /scratch/work/public/singularity/cuda11.8.86-cudnn8.7-devel-ubuntu22.04.2.sif /bin/bash`
     4. Install Mamba: https://github.com/conda-forge/miniforge
     5. Install it in `/ext3/miniforge3` when prompted
     6. Create environment from config file: `mamba env create -f conda_env.yaml`

@@ -30,10 +30,12 @@
     1. `srun --nodes=1 --tasks-per-node=1 --cpus-per-task=16 --mem=64GB --time=2:00:00 --pty /bin/bash`
     2. This requests 16 CPUs, which is sufficient for data processing
 3. Setup a Mamba environment
-    1. `cp /vast/hre7290/overlay-home-robot-env.ext3 $SCRATCH`
-    2. Enter singularity container: `singularity exec --overlay $SCRATCH/overlay-home-robot-env.ext3:ro /scratch/work/public/singularity/cuda11.8.86-cudnn8.7-devel-ubuntu22.04.2.sif /bin/bash`
-    3. Install Mamba into scratch folder: https://github.com/conda-forge/miniforge
-    4. `mamba env create -f conda_env.yaml`
+    1. `cp /scratch/work/public/overlay-fs-ext3/overlay-50G-10M.ext3.gz $SCRATCH/overlay-home-robot-env.ext3.gz`
+    2. `gunzip overlay-home-robot-env.ext3.gz`
+    3. Enter singularity container: `singularity exec --overlay $SCRATCH/overlay-home-robot-env.ext3:ro /scratch/work/public/singularity/cuda11.8.86-cudnn8.7-devel-ubuntu22.04.2.sif /bin/bash`
+    4. Install Mamba: https://github.com/conda-forge/miniforge
+    5. Install it in `/ext3/miniforge3` when prompted
+    6. Create environment from config file: `mamba env create -f conda_env.yaml`
 
 More detailed instructions for getting started on Greene: https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/greene/getting-started?authuser=0
 

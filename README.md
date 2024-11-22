@@ -74,8 +74,24 @@ Best practices on Greene: https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/g
 4. Submit GPU training job
     1. `sbatch train_vqbet.slurm`
 
-<!-- ## Robot Deployment
-1.  -->
+## Robot Deployment
+Before starting, follow the robot setup instructions. 
+1.  cd `min-stretch`
+    1. Clone if it doesn't exist: `git clone https://github.com/NYU-robot-learning/min-stretch.git`
+2. `./run_robot.sh`
+    1. On left hand side, run `python3 start_server.py`
+    2. On right hand side, run `python run.py`
+        1. This will download and run a pretrained RUM policy for Door Opening
+        2. You can also specify a different task
+            1. `python run.py task=drawer_opening` 
+            2. `python run.py task=reorientation`
+            3. `python run.py task=bag_pick_up` 
+            4. `python run.py task=tissue_pick_up`
+        3. To specify your own trained model
+            1. `python run.py model_weight_pth=YOUR_MODEL_PATH`
+        4. Note: By default these are all running VQ-BeT models, to run a Diffusion Policy model run
+            1. `python run.py --config-name=run_diffusion task=TASK_NAME`
+            2. `python run.py --config-name=run_diffusion model_weight_pth=YOUR_MODEL_PATH`
 
 <!-- # Setting Up & Running Zero-Shot Models on Hello Robot Stretch
 

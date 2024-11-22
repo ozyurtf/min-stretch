@@ -2,7 +2,7 @@
 1. Turn on the robot and set charger to 12V supply mode  
    <img src="images/stretch_power_supply.png" alt="Stretch power supply" width="300"/>
 
-2. SSH into robot via Tailscale  
+2. SSH into robot via local or Tailscale IP
 3. **Remove phone clamp** (if attached) with an allen key  
 4. Run `stretch_robot_home.py` in terminal for joint calibration  
     - **ALWAYS** repeat Step 3 before running this  

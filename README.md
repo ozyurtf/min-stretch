@@ -75,7 +75,7 @@ Best practices on Greene: https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/g
     1. `sbatch train_vqbet.slurm`
 
 ## Robot Deployment
-Before starting, follow the robot setup instructions. 
+Before starting, follow the [robot setup](setup_robot.md) instructions. 
 1.  cd `min-stretch`
     1. Clone if it doesn't exist: `git clone https://github.com/NYU-robot-learning/min-stretch.git`
 2. `./run_robot.sh`

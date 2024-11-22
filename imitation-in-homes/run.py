@@ -118,7 +118,7 @@ def run(cfg: OmegaConf, init_model=_init_model):
         controller.run()
 
 
-@hydra.main(config_path="configs", config_name="run", version_base="1.2")
+@hydra.main(config_path="configs", config_name="run_vqbet", version_base="1.2")
 def main(cfg: OmegaConf):
     if cfg.get("loss_fn") is None:
         run(cfg)

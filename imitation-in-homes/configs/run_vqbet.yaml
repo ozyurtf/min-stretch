@@ -11,6 +11,7 @@ image_buffer_size: 3
 device: cpu
 
 task: door_opening
+model_weight_pth: null
 
 vqvae_load_dir: null
 vqvae_n_embed: 16

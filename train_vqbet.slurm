@@ -17,6 +17,7 @@ singularity exec $nv \
             --overlay $SCRATCH/overlay-home-robot-env.ext3:ro \
             /scratch/work/public/singularity/cuda11.8.86-cudnn8.7-devel-ubuntu22.04.2.sif \
             /bin/bash -c "
+source ~/.bashrc
 mamba activate home_robot
 cd $SCRATCH/min-stretch
 ./train_vqbet_model.sh

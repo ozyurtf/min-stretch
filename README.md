@@ -1,4 +1,4 @@
-## Clone and Enter Repository in Greene
+<!-- ## Clone and Enter Repository in Greene
 1. Enter scratch directory
     1. `cd $SCRATCH`
 2. Clone
@@ -8,7 +8,7 @@
 4. Run setup script
     1. `./setup.sh`
 5. Setup WandB
-    1. TODO (ignore for now)
+    1. TODO (ignore for now) -->
 
 <!-- ## Setting up Mamba Environment
 
@@ -24,7 +24,7 @@
 2. Create environment
     1. `mamba env create -f conda_env.yaml` -->
 
-## Request Resources and Set Up Environment on Greene
+<!-- ## Request Resources and Set Up Environment on Greene
 1. `cd $SCRATCH`
 2. Request CPU resources in an interactive session
     1. `srun --nodes=1 --tasks-per-node=1 --cpus-per-task=16 --mem=64GB --time=2:00:00 --pty /bin/bash`
@@ -91,7 +91,7 @@ Before starting, follow the [robot setup](setup_robot.md) instructions.
             1. `python run.py model_weight_pth=YOUR_MODEL_PATH`
         4. Note: By default these are all running VQ-BeT models, to run a Diffusion Policy model run
             1. `python run.py --config-name=run_diffusion task=TASK_NAME`
-            2. `python run.py --config-name=run_diffusion model_weight_pth=YOUR_MODEL_PATH`
+            2. `python run.py --config-name=run_diffusion model_weight_pth=YOUR_MODEL_PATH` -->
 
 <!-- # Setting Up & Running Zero-Shot Models on Hello Robot Stretch
 

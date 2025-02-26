@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=vqbet
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=48
-#SBATCH --mem=144GB
-#SBATCH --gres=gpu:4
+#SBATCH --cpus-per-task=20
+#SBATCH --mem=96GB
+#SBATCH --gres=gpu:2
 #SBATCH --constraint=rtx8000
-#SBATCH --time=30:00:00
+#SBATCH --time=24:00:00
 #SBATCH --mail-type=END
 #SBATCH --output=slurm_%j.out
 #SBATCH --error=slurm_%j.err

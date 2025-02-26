@@ -27,7 +27,7 @@ vqvae_load_dir: ${vqvae_load_dir} # path of the pretrained vq-bet
 
 offset_loss_multiplier: 10. # vq-bet hyperparameter tuning
 secondary_code_multiplier: 0.5 # vq-bet hyperparameter tuning
-obs_window_size: 3 # SHOULD be same with "sequence_length" of vqbet_train.yaml
+obs_window_size: 6 # SHOULD be same with "sequence_length" of vqbet_train.yaml
 gamma: 2.0
 sequentially_select: ${sequentially_select}
 temperature: ${temperature}

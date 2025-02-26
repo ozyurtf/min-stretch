@@ -17,6 +17,7 @@ train:
     safe_action_threshold: 0.05
     relative_gripper: False
     use_depth: ${use_depth}
+    fps_subsample: 1
   max_videoreaders_in_memory: 64
   shuffle_mode: RANDOM_ORDER
   device: cpu
@@ -42,6 +43,7 @@ test:
     safe_action_threshold: 0.05
     relative_gripper: False
     use_depth: ${use_depth}
+    fps_subsample: 1
   max_videoreaders_in_memory: 64
   shuffle_mode: RANDOM_ORDER
   device: cpu

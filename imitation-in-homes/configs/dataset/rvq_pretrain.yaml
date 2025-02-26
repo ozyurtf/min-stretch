@@ -17,6 +17,7 @@ train:
     safe_action_threshold: 0.05
     relative_gripper: False
     use_depth: ${use_depth}
+    fps_subsample: 1
   only_action_return: True
   max_videoreaders_in_memory: 64
   shuffle_mode: RANDOM_ORDER
@@ -43,6 +44,7 @@ test:
     safe_action_threshold: 0.05
     relative_gripper: False
     use_depth: ${use_depth}
+    fps_subsample: 1
   only_action_return: True
   max_videoreaders_in_memory: 64
   shuffle_mode: RANDOM_ORDER

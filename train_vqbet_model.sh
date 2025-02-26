@@ -1,7 +1,7 @@
 #!/bin/bash
 
 include_task="Door_Opening"
-BATCH_SIZE=50
+BATCH_SIZE=176
 
 now_date=$(date '+%Y-%m-%d')
 now_time=$(date '+%H-%M-%S')

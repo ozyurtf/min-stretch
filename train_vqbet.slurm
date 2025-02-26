@@ -5,15 +5,13 @@
 #SBATCH --mem=96GB
 #SBATCH --gres=gpu:2
 #SBATCH --constraint=rtx8000
-#SBATCH --time=24:00:00
+#SBATCH --time=16:00:00
 #SBATCH --mail-type=END
 #SBATCH --output=slurm_%j.out
 #SBATCH --error=slurm_%j.err
 
 module purge
-port=$(shuf -i 10000-65500 -n 1)
-if [[ $(hostname -s) =~ ^g ]]; then nv="--nv"; fi
-singularity exec $nv \
+singularity exec --nv \
             --overlay $SCRATCH/overlay-home-robot-env.ext3:ro \
             /scratch/work/public/singularity/cuda11.8.86-cudnn8.7-devel-ubuntu22.04.2.sif \
             /bin/bash -c "

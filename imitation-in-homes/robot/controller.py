@@ -24,7 +24,7 @@ from .utils import (
 )
 
 logger = logging.getLogger(__name__)
-STRETCH_GRIPPER_MAX = 150
+STRETCH_GRIPPER_MAX = 700
 
 
 def get_home_param(
@@ -268,6 +268,14 @@ class Controller:
             action_matrix = self.action_tensor_to_matrix(action_tensor)
             action_robot_matrix = self.cam_to_robot_frame(action_matrix)
             action_robot = self.matrix_to_action_tensor(action_robot_matrix)
+
+            # Transforms for AnySense app
+            x, y, z, rx, ry, rz = action_robot[:6]
+            action_robot[0] = y
+            action_robot[1] = x
+            action_robot[2] = -z
+
+            action_robot[4] = -ry
 
             gripper = action_tensor[-1]
             logger.info(f"Gripper: {gripper} {self.abs_gripper} {self.gripper}")

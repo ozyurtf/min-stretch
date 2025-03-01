@@ -18,14 +18,14 @@ pouring = [33, 19, 53]
 
 OVERRIDE_STATES = {}
 MAX_RETRIES = 50
-HOME_POS = 0.4
+HOME_POS = 0.7
 ROTATION_VEL = 1
 
-STRETCH_GRIPPER_MAX = 150
-STRETCH_GRIPPER_TIGHT = -35
+STRETCH_GRIPPER_MAX = 700
+STRETCH_GRIPPER_TIGHT = -150
 STICKY_GRIPPER = False
-CLOSING_THRESHOLD = 0.85
-REOPENING_THRESHOLD = 0.8
+CLOSING_THRESHOLD = 0.3
+REOPENING_THRESHOLD = 1.0
 
 class HelloRobot:
     def __init__(
@@ -341,15 +341,15 @@ class HelloRobot:
             self._has_gripped = False
         self.robot.push_command()
         
-        while abs(self.getGripperState() - self.gripper) > 10 and self.gripper_change:
-            print(self.getGripperState(), self.gripper)
-            prev_diff = self.getGripperState() - self.gripper
+        # while abs(self.getGripperState() - self.gripper) > 10 and self.gripper_change:
+        #     print(self.getGripperState(), self.gripper)
+        #     prev_diff = self.getGripperState() - self.gripper
             
-            time.sleep(0.05)
-            curr_diff = self.getGripperState() - self.gripper
-            if curr_diff == prev_diff:
-                self.robot.end_of_arm.move_to('stretch_gripper', self.gripper)
-                self.robot.push_command()
+        #     time.sleep(0.05)
+        #     curr_diff = self.getGripperState() - self.gripper
+        #     if curr_diff == prev_diff:
+        #         self.robot.end_of_arm.move_to('stretch_gripper', self.gripper)
+        #         self.robot.push_command()
         
         self.gripper_change = 0
         if self.threshold_count == 2:

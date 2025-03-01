@@ -41,6 +41,7 @@ class R3DCameraPublisher(ProcessInstantiator):
         while image is None:
             image, depth, pose = self.app.start_process_image()
             image = np.moveaxis(image, [0], [1])[..., ::-1, ::-1]
+            image = np.rot90(image, 2)
             image = cv2.resize(image, dsize=(256, 256), interpolation=cv2.INTER_CUBIC)
         if self.use_depth: 
             depth = np.ascontiguousarray(np.rot90(depth, -1)).astype(np.float64)  

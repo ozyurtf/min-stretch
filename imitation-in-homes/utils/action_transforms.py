@@ -1,7 +1,7 @@
 import numpy as np
 
 # permutation transformation matrix to go from record3d axis to personal camera axis
-P = np.asarray([[0, 1, 0, 0], [0, 0, -1, 0], [-1, 0, 0, 0], [0, 0, 0, 1]])
+P = np.array([[-1, 0, 0, 0], [0, 0, -1, 0], [0, -1, 0, 0], [0, 0, 0, 1]])
 # end effector transformation matrix to go from personal camera axis to end effector axis. Corrects the 15 degree offset along the x axis
 EFT = np.asarray([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
 

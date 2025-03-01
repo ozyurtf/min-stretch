@@ -8,11 +8,11 @@ defaults:
 
 use_depth: False
 robot_cfg:
-  stretch_gripper_max: 150
+  stretch_gripper_max: 700
   stretch_gripper_min: 0
-  stretch_gripper_tight: -35
+  stretch_gripper_tight: -150
   sticky_gripper: false
-  closing_threshold: 0.85
+  closing_threshold: 0.3
   reopening_threshold: 0.8
   # Value below should be null if we want it to be computed from 
   gripper_threshold_post_grasp_list: null

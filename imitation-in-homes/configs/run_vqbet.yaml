@@ -17,6 +17,7 @@ vqvae_load_dir: null
 vqvae_n_embed: 16
 temperature: 0.000001
 sequentially_select: true
+obs_window_size: ${image_buffer_size}
 
 run_offline: false
 use_depth: false

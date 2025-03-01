@@ -23,6 +23,7 @@ vqvae_load_dir: /path/to/your_rvq
 vqvae_n_embed: 16 # should be same with rvq pre-training
 temperature: 2.0
 control_timeskip: 7
+obs_window_size: 6
 
 batch_sampler:
   _target_: dataloaders.decord_dataset.DecordBatchSampler

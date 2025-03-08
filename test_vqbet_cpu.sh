@@ -1,6 +1,6 @@
 #!/bin/bash
 
-include_task="Door_Opening"
+include_task="bag_pick_up"
 
 wandb=true  # Set the wandb configuration here
 

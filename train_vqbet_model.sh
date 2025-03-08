@@ -1,6 +1,6 @@
 #!/bin/bash
 
-include_task="Door_Opening"
+include_task="bag_pick_up"
 BATCH_SIZE=176
 
 now_date=$(date '+%Y-%m-%d')
